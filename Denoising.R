@@ -42,8 +42,8 @@ denoised_time_series <- function(hankel, rank) {
 
 # Task 5: Evaluate the Denoising
 evaluate_denoising <- function(original, denoised) {
-  mse <- mean((original - denoised)^2)
-  return(mse)
+  rmse <- sqrt(mean((original - denoised)^2))
+  return(rmse)
 }
 
 # Example Usage:
@@ -63,7 +63,7 @@ denoised_ts0 <- denoised_time_series(hankel, rank = 2)
 
 # Evaluate the denoising
 mse <- evaluate_denoising(signal, denoised_ts0)
-print(paste("Mean Squared Error (MSE):", mse))
+print(paste("Root Mean Squared Error (RMSE):", mse))
 
 # Plot the original, noisy, and denoised time series
 plot(original, type = "l", col = "blue", ylim = range(c(original, noisy, denoised)), 
